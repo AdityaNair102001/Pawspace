@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">IndiePaw</string>
+    <string name="app_name">  Pawspace</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
 </resources>
