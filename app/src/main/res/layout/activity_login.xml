@@ -34,7 +34,8 @@
         app:hintTextColor="#E8768D"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Pawspace">
+        app:layout_constraintTop_toBottomOf="@+id/Pawspace"
+        app:boxStrokeColor="@color/colorPrimary">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email"
@@ -62,7 +63,8 @@
         app:hintTextColor="#E8768D"
         app:layout_constraintEnd_toEndOf="@+id/outlinedTextField"
         app:layout_constraintStart_toStartOf="@+id/outlinedTextField"
-        app:layout_constraintTop_toBottomOf="@+id/outlinedTextField">
+        app:layout_constraintTop_toBottomOf="@+id/outlinedTextField"
+        app:boxStrokeColor="@color/colorPrimary">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password"
@@ -82,6 +84,7 @@
         android:textColor="@color/black"
         android:textSize="18sp"
         app:cornerRadius="25dp"
+        app:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -138,7 +141,8 @@
         android:layout_marginTop="16dp"
         android:text="Don't have an account?"
         app:layout_constraintEnd_toStartOf="@+id/SignUp"
-        app:layout_constraintTop_toTopOf="@+id/SignUp" />
+        app:layout_constraintTop_toTopOf="@+id/SignUp"
+        android:textColor="@color/grey"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
