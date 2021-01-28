@@ -4,4 +4,8 @@
     <string name="password">Password</string>
     <string name="email">Email</string>
     <string name="re_enter">Re-enter Password</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="blog">Blog</string>
+    <string name="profile">Profile</string>
 </resources>

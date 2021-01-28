@@ -23,6 +23,16 @@ public class LoginActivity extends AppCompatActivity {
                 // Do something in response to button click
             }
         });
+
+        Button login = findViewById(R.id.Login);
+        login.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Intent intent = new Intent(LoginActivity.this, DefaultPageActivity.class);
+                startActivity(intent);
+                // Do something in response to button click
+            }
+        });
     }
 
 }
