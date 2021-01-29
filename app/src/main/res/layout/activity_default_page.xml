@@ -9,12 +9,32 @@
     tools:context=".DefaultPageActivity">
 
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="@string/app_name"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            app:titleTextColor="@color/black"
+            app:titleMarginStart="130dp"
+            app:titleTextAppearance="@style/TextAppearance.MyApp.Headline1"
+            />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="@color/white"
         app:fabCradleMargin="20dp"
         app:fabCradleVerticalOffset="10dp"
         app:fabCradleRoundedCornerRadius="20dp">
@@ -38,6 +58,10 @@
         android:src="@drawable/ic_add"
         app:tint="@color/white"
         app:layout_anchor="@id/bottomAppBar" />
+
+
+
+
 
 
 
