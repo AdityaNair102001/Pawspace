@@ -28,7 +28,6 @@
 
 
 
-
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
         android:layout_width="match_parent"
@@ -36,7 +35,7 @@
         android:layout_gravity="bottom"
         android:backgroundTint="@color/white"
         app:fabCradleMargin="20dp"
-        app:fabCradleVerticalOffset="10dp"
+        app:fabCradleVerticalOffset="5dp"
         app:fabCradleRoundedCornerRadius="20dp">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -46,20 +45,19 @@
             android:layout_marginEnd="16dp"
             android:background="@android:color/transparent"
             app:itemIconTint="@color/navcolor"
-            app:itemTextColor="@color/navcolor"
-            app:menu="@menu/bottom_navigation_menu" />
+            app:menu="@menu/bottom_navigation_menu"
+            app:itemTextColor="@color/navcolor"/>
+
     </com.google.android.material.bottomappbar.BottomAppBar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimaryVariant"
         android:src="@drawable/ic_add"
-        app:tint="@color/white"
-        app:layout_anchor="@id/bottomAppBar" />
-
-
+        android:backgroundTint="@color/colorPrimaryVariant"
+        app:layout_anchor="@id/bottomAppBar"
+        app:tint="@color/white"/>
 
 
 
