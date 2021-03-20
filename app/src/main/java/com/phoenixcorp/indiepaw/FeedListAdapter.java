@@ -12,9 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.FeedListViewHolder> {
 
     private String[] data;
-    public FeedListAdapter(String[] data)
+    private String[] location;
+    public FeedListAdapter(String[] data,String[] location)
     {
         this.data=data;
+        this.location=location;
     }
 
     @NonNull
@@ -28,23 +30,29 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.FeedLi
     @Override
     public void onBindViewHolder(@NonNull FeedListViewHolder holder, int position) {
         String title=data[position];
-        holder.texttitle.setText(title);
+        String loc=location[position];
+        holder.textView3.setText(title);
+        holder.secondaryText.setText(loc);
     }
 
     @Override
     public int getItemCount() {
-        return data.length;
+        return location.length;
     }
 
     public class FeedListViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView imgicon;
-        TextView texttitle;
+        ImageView imageView;
+        ImageView circleImageView;
+        TextView textView3;
+        TextView secondaryText;
 
         public FeedListViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgicon=itemView.findViewById(R.id.imgicon);
-            texttitle=itemView.findViewById(R.id.texttitle);
+            imageView=itemView.findViewById(R.id.imageView);
+            circleImageView=itemView.findViewById(R.id.circleImageView);
+            textView3=itemView.findViewById(R.id.textView3);
+            secondaryText=itemView.findViewById(R.id.secondaryText);
 
         }
     }

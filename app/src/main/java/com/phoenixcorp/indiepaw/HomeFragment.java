@@ -71,8 +71,9 @@ public class HomeFragment extends Fragment {
         feedList=view.findViewById(R.id.FeedList);
         feedList.setHasFixedSize(true);
         feedList.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL,false));
-        String[] languages={"Java", "Python", "C++","React","Javascript","CSS","Java", "Python", "C++","React","Javascript","CSS","Java"};
-        feedList.setAdapter(new FeedListAdapter(languages));
+        String[] dogs={"Labrador", "Pomerian", "Pug","Pitbull","Stray","Indian","Golden Retriever", "Husky", "Labrador","Husky","Indian","Pug","Stray"};
+        String[] loacation={"Kalyan","Ulhasnagar","Kharghar","CST","Dadar","Thane","Kurla","Andheri","Dombivili","Kalyan","Khadakpada","Radha Nagar","Scion"};
+        feedList.setAdapter(new FeedListAdapter(dogs,loacation));
 
 
 
