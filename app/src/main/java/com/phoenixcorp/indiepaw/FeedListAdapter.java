@@ -3,6 +3,7 @@ package com.phoenixcorp.indiepaw;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,7 +32,7 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.FeedLi
     public void onBindViewHolder(@NonNull FeedListViewHolder holder, int position) {
         String title=data[position];
         String loc=location[position];
-        holder.textView3.setText(title);
+        holder.username.setText(title);
         holder.secondaryText.setText(loc);
     }
 
@@ -44,15 +45,17 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.FeedLi
 
         ImageView imageView;
         ImageView circleImageView;
-        TextView textView3;
+        TextView username;
         TextView secondaryText;
+       // Button bookmark;
 
         public FeedListViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView=itemView.findViewById(R.id.imageView);
-            circleImageView=itemView.findViewById(R.id.circleImageView);
-            textView3=itemView.findViewById(R.id.textView3);
+            circleImageView=itemView.findViewById(R.id.ProfilePicture);
+            username=itemView.findViewById(R.id.Username);
             secondaryText=itemView.findViewById(R.id.secondaryText);
+            //bookmark = itemView.findViewById(R.id.bookmarkButton);
 
         }
     }
