@@ -3,7 +3,6 @@ package com.phoenixcorp.indiepaw;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,7 +13,7 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.FeedLi
 
     private String[] data;
     private String[] location;
-    public FeedListAdapter(String[] data,String[] location)
+    public FeedListAdapter(String[] data, String[] location)
     {
         this.data=data;
         this.location=location;
@@ -47,7 +46,7 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.FeedLi
         ImageView circleImageView;
         TextView username;
         TextView secondaryText;
-       // Button bookmark;
+        // Button bookmark;
 
         public FeedListViewHolder(@NonNull View itemView) {
             super(itemView);

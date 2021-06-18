@@ -15,7 +15,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:padding="10dp"
-        android:paddingBottom="10dp">
+        android:paddingBottom="10dp"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="30dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -38,10 +40,10 @@
 
             <CheckBox
                 android:id="@+id/bookmarkButton"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_width="24dp"
+                android:layout_height="26dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
                 android:background="@drawable/bokmark_button"
                 android:button="@null"
                 android:checked="false"
@@ -49,25 +51,12 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/Username"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="Username"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                app:layout_constraintStart_toEndOf="@+id/ProfilePicture"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/ProfilePicture"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:layout_margin="10dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:src="@drawable/dogprofile"
                 app:layout_constraintBottom_toTopOf="@+id/imageView"
@@ -76,21 +65,25 @@
 
             </de.hdodenhof.circleimageview.CircleImageView>
 
-            <ImageView
-                android:id="@+id/imageView"
+
+            <TextView
+                android:id="@+id/Username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/secondaryText"
-                app:srcCompat="@drawable/dogimage" />
+                android:layout_marginTop="16dp"
+                android:text="Username"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/ProfilePicture"
+                app:layout_constraintTop_toTopOf="parent" />
+
 
             <TextView
                 android:id="@+id/secondaryText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="Secondary Text"
@@ -99,6 +92,20 @@
                 app:layout_constraintBottom_toTopOf="@+id/imageView"
                 app:layout_constraintStart_toEndOf="@+id/ProfilePicture"
                 app:layout_constraintTop_toBottomOf="@+id/Username" />
+
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="361dp"
+                android:layout_height="233dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/secondaryText"
+                app:srcCompat="@drawable/dogimage" />
+
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chip_group_main"
@@ -110,12 +117,14 @@
                 app:chipSpacingHorizontal="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView">
+                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                app:layout_constraintVertical_bias="0.20">
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/BreedChip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingHorizontal="2dp"
                     android:text="Breed"
                     app:chipBackgroundColor="@color/colorPrimaryVariant"
                     app:closeIconEnabled="false"
@@ -126,6 +135,7 @@
                     android:id="@+id/VaccinationChip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingHorizontal="2dp"
                     android:text="Vaccination"
                     app:chipBackgroundColor="@color/colorPrimaryVariant"
                     app:closeIconEnabled="false"
@@ -136,7 +146,7 @@
                     android:id="@+id/AgeChip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="4dp"
+                    android:paddingHorizontal="2dp"
                     android:text="Age"
                     app:chipBackgroundColor="@color/colorPrimaryVariant"
                     app:closeIconEnabled="false"
@@ -164,6 +174,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="description"
                 android:textColor="@color/black"
                 android:textSize="18sp"

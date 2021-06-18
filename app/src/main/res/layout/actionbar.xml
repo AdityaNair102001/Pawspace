@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/action_bar"
+    android:layout_width="match_parent"
+    android:layout_height="54dp"
+    android:background="@color/colorPrimary">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp">
+
+
+        <ImageView
+            android:id="@+id/chat"
+            android:layout_width="34dp"
+            android:layout_height="26dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/chats1" />
+
+        <TextView
+            android:layout_width="184dp"
+            android:layout_height="56dp"
+            android:layout_marginEnd="54dp"
+            android:layout_toStartOf="@+id/chat"
+            android:layout_centerVertical="true"
+            android:text="Pawspace"
+            android:textSize="42dp"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.MyApp.Headline1"
+            android:textColor="@color/black" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

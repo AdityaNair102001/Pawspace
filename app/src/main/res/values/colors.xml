@@ -10,4 +10,5 @@
     <color name="colorPrimaryVariant">#E8768D</color>
     <color name="colorPrimary">#FFC4D0</color>
     <color name="grey">#696969</color>
+    <color name="colorPrimaryDark">#141932</color>
 </resources>
