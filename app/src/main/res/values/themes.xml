@@ -14,6 +14,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">@color/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="textAppearanceHeadline1">@style/TextAppearance.MyApp.Headline1</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="TextAppearance.MyApp.Headline1" parent="TextAppearance.MaterialComponents.Headline1">

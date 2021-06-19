@@ -11,4 +11,5 @@
     <color name="colorPrimary">#FFC4D0</color>
     <color name="grey">#696969</color>
     <color name="colorPrimaryDark">#141932</color>
+    <color name="colorUploadBackground">#ffddee</color>
 </resources>

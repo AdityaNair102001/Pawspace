@@ -1,17 +1,12 @@
 package com.phoenixcorp.indiepaw;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.tabs.TabLayout;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 public class DefaultPageActivity extends AppCompatActivity {
@@ -44,6 +39,9 @@ public class DefaultPageActivity extends AppCompatActivity {
                 {
                     case R.id.home:
                         selectedFragment = new HomeFragment();
+                        break;
+                    case R.id.add:
+                        selectedFragment = new AddNewPostFragment();
                         break;
                     case R.id.account:
                         selectedFragment = new AccountFragment();

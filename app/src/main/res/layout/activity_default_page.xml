@@ -8,7 +8,7 @@
     android:background="@color/white"
     tools:context=".DefaultPageActivity">
 
-    <include layout = "@layout/actionbar"
+    <include layout="@layout/actionbar"
         android:id="@+id/actionbar"/>
 
 

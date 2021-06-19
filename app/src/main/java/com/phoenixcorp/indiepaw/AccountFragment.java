@@ -1,5 +1,6 @@
 package com.phoenixcorp.indiepaw;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +10,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -21,6 +23,7 @@ public class AccountFragment extends Fragment implements TabLayout.OnTabSelected
 
     ViewPager viewPager;
     TabLayout tabLayout;
+    Button editProfile;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -82,8 +85,18 @@ public class AccountFragment extends Fragment implements TabLayout.OnTabSelected
 
         tabLayout.addOnTabSelectedListener(this);
 
+        editProfile = (Button) view.findViewById(R.id.editprofile);
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),EditProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
+
 
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
@@ -99,4 +112,6 @@ public class AccountFragment extends Fragment implements TabLayout.OnTabSelected
     public void onTabReselected(TabLayout.Tab tab) {
 
     }
+
+
 }

@@ -17,7 +17,7 @@
             android:layout_height="26dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/chats1" />
+            android:src="@drawable/chats" />
 
         <TextView
             android:layout_width="184dp"
