@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "329021048584",
+    "project_id": "pawspace-5a18e",
+    "storage_bucket": "pawspace-5a18e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:329021048584:android:14bf330e2f796a6c488ebd",
+        "android_client_info": {
+          "package_name": "com.phoenixcorp.indiepaw"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "329021048584-e464lp4uk2tt9l6rb2418pemvnf3bkvi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDovUleVrFQHw_jRvRC19EyG_MSgZCrcoI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "329021048584-e464lp4uk2tt9l6rb2418pemvnf3bkvi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
