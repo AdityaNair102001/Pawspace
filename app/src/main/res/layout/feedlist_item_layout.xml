@@ -47,7 +47,6 @@
                 android:background="@drawable/bokmark_button"
                 android:button="@null"
                 android:checked="false"
-                android:stateListAnimator="@animator/scale"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

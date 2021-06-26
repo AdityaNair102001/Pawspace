@@ -15,6 +15,8 @@
         <!-- Customize your theme here. -->
         <item name="textAppearanceHeadline1">@style/TextAppearance.MyApp.Headline1</item>
         <item name="android:textSize">18sp</item>
+
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <style name="TextAppearance.MyApp.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
