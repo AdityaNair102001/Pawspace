@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.phoenixcorp.indiepaw">
+
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
@@ -10,8 +11,12 @@
         android:roundIcon="@drawable/app_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.IndiePaw">
-        <activity android:name=".EditProfileActivity"/>
-        <activity android:name=".DefaultPageActivity" />
+        <activity android:name=".ChatActivity"></activity>
+        <activity android:name=".TopAppBarActivity" />
+        <activity android:name=".EditProfileActivity" />
+        <activity
+            android:name=".DefaultPageActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">

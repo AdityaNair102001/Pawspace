@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
@@ -14,6 +15,7 @@ public class DefaultPageActivity extends AppCompatActivity {
     private static final String TAG = DefaultPageActivity.class.getSimpleName();
     FragmentManager fragmentManager;
     ChipNavigationBar BottomNavBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
