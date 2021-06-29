@@ -42,7 +42,7 @@
     </de.hdodenhof.circleimageview.CircleImageView>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outlinedTextField"
+        android:id="@+id/fullNameTextField"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:startIconDrawable="@drawable/accounticonsmall"
         app:startIconTint="@color/grey"
@@ -68,7 +68,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outlinedTextField2"
+        android:id="@+id/emailTextField"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:startIconDrawable="@drawable/emailicon"
         app:startIconTint="@color/grey"
@@ -81,7 +81,7 @@
         app:hintTextColor="#E8768D"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/outlinedTextField">
+        app:layout_constraintTop_toBottomOf="@+id/fullNameTextField">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/registered_email"
@@ -94,7 +94,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outlinedTextField3"
+        android:id="@+id/PasswordTextField"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:startIconDrawable="@drawable/mobileicon"
         app:startIconTint="@color/grey"
@@ -107,7 +107,7 @@
         app:hintTextColor="#E8768D"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/outlinedTextField2">
+        app:layout_constraintTop_toBottomOf="@+id/emailTextField">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/registered_mobile"
@@ -133,7 +133,7 @@
         app:hintTextColor="#E8768D"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/outlinedTextField3">
+        app:layout_constraintTop_toBottomOf="@+id/PasswordTextField">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/location"
@@ -158,6 +158,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/outlinedTextField4" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log out"
+        app:iconTint="@color/white"
+        app:cornerRadius="20dp"
+        android:backgroundTint="@color/colorPrimaryVariant"
+        android:textColor="@color/white"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/save" />
 
 
 

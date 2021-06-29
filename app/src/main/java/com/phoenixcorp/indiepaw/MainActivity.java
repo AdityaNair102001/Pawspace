@@ -13,14 +13,19 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import pl.droidsonroids.gif.GifImageView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static int SPLASH_SCREEN = 5600;
+    private static int SPLASH_SCREEN = 3200;
     Animation topAnim, bottomAnim;
     GifImageView gif;
     TextView appname, description;
+
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,23 +46,43 @@ public class MainActivity extends AppCompatActivity {
         appname.setAnimation(bottomAnim);
         description.setAnimation(bottomAnim);
 
+        auth = FirebaseAuth.getInstance();
+
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+
 
                 Pair[] pairs = new Pair[2];
                 pairs[0] = new Pair<View,String>(gif,"gifImageView2");
                 pairs[1] = new Pair<View,String>(appname,"text_animation");
 
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,pairs);
-                startActivity(intent,options.toBundle());
-                finish();
+
+                if(auth.getCurrentUser()!=null){
+                    startActivity(new Intent(getApplicationContext(),DefaultPageActivity.class));
+                    finish();
+                }
+                else{
+                    Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                    startActivity(intent,options.toBundle());
+                    finish();
+                }
             }
         },SPLASH_SCREEN);
 
-
-
     }
+
+  /*  @Override
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if(user!= null){
+            startActivity(new Intent(MainActivity.this,DefaultPageActivity.class));
+            finish();
+        }
+    }*/
 }
