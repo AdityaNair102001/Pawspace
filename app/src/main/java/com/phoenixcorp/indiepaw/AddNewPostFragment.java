@@ -3,7 +3,6 @@ package com.phoenixcorp.indiepaw;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.ClipData;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -27,7 +26,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputLayout;
+import com.google.android.material.chip.ChipGroup;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -60,6 +59,8 @@ public class AddNewPostFragment extends Fragment {
     ArrayList<Uri> images;
     Button upload,post;
     EditText breed, age, location, description;
+    ChipGroup gender, vaccine;
+    int genderid, vaccineid;
 
     FirebaseFirestore db;
     ProgressDialog pd;
@@ -100,6 +101,9 @@ public class AddNewPostFragment extends Fragment {
         age = view.findViewById(R.id.age);
         location = view.findViewById(R.id.location);
         description = view.findViewById(R.id.description);
+        gender = view.findViewById(R.id.genderChip);
+        vaccine = view.findViewById(R.id.vaccinationChip);
+
 
         db = FirebaseFirestore.getInstance();
 
@@ -130,6 +134,26 @@ public class AddNewPostFragment extends Fragment {
             String ageVal = age.getText().toString().trim();
             String locationVal = location.getText().toString().trim();
             String descriptionVal = description.getText().toString().trim();
+            String genderVal="N/A", vaccineVal="N/A";
+
+            genderid = gender.getCheckedChipId();
+            vaccineid = vaccine.getCheckedChipId();
+
+            if(genderid ==2131296396){
+                genderVal = "Male";
+            }
+            else if(genderid ==2131296395)
+            {
+                genderVal ="Female";
+            }
+
+            if(vaccineid ==2131296706){
+                vaccineVal = "Vaccinated";
+            }
+            else if(vaccineid ==2131296556)
+            {
+                vaccineVal ="Not Vaccinated";
+            }
 
             final String timeStamp = Long.toString(System.currentTimeMillis());
             final String documentID = timeStamp+currentUser;
@@ -140,6 +164,7 @@ public class AddNewPostFragment extends Fragment {
 
             }
             else{
+
 
                 if(TextUtils.isEmpty(locationVal)){
                     location.setError("Location is required");
@@ -152,7 +177,7 @@ public class AddNewPostFragment extends Fragment {
                 }
                 else{
                     uploadImages(db,pd,documentID,currentUser);
-                    uploadData(db,pd,documentID,currentUser,breedVal,ageVal,locationVal,descriptionVal);
+                    uploadData(db,pd,documentID,currentUser,breedVal,ageVal,locationVal,descriptionVal,genderVal,vaccineVal);
                 }
             }
         });
@@ -236,7 +261,7 @@ public class AddNewPostFragment extends Fragment {
     }
 
 
-    private void uploadData(FirebaseFirestore db, ProgressDialog pd, String documentID, String currentUser, String breedVal, String ageVal, String locationVal, String descriptionVal) {
+    private void uploadData(FirebaseFirestore db, ProgressDialog pd, String documentID, String currentUser, String breedVal, String ageVal, String locationVal, String descriptionVal, String genderVal, String vaccineVal) {
 
 
         Map<String,Object> postData=new HashMap<>();
@@ -244,6 +269,8 @@ public class AddNewPostFragment extends Fragment {
         postData.put("Age",ageVal);
         postData.put("Description",descriptionVal);
         postData.put("location",locationVal);
+        postData.put("Gender",genderVal);
+        postData.put("Vaccine",vaccineVal);
         postData.put("UID",currentUser);
 
         db.collection("posts").document(documentID).set(postData).addOnCompleteListener(new OnCompleteListener<Void>() {

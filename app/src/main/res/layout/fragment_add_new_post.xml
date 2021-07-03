@@ -55,16 +55,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:backgroundTint="@color/white"
-            android:text="upload images"
-            android:textColor="@color/colorPrimary"
+            android:text="Select Images"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimaryVariant"
             app:cornerRadius="15dp"
             app:icon="@drawable/upload"
-            app:iconTint="@color/colorPrimary"
+            app:iconTint="@color/colorPrimaryVariant"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/card"
-            app:strokeColor="@color/colorPrimary"
-            app:strokeWidth="2dp"/>
+            app:strokeColor="@color/colorPrimaryVariant"
+            app:strokeWidth="1.25dp"
+            app:rippleColor="@color/colorPrimary"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/Breed"
@@ -143,6 +145,13 @@
 
 
 
+        <RelativeLayout
+            android:id="@+id/genderLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/Location"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
             <TextView
                 android:id="@+id/genderText"
@@ -154,97 +163,99 @@
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="18dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/Location"/>
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/genderChip"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="60dp"
+                android:layout_marginStart="100dp"
                 android:layout_marginTop="16dp"
-                app:singleSelection="true"
+                app:chipSpacingHorizontal="16dp"
                 app:layout_constraintStart_toEndOf="@id/genderText"
-                app:layout_constraintTop_toBottomOf="@id/Location">
+                app:singleSelection="true">
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipMale"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    style="@style/CustomChipStyle"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
-                    android:backgroundTint="@color/white"
                     android:text="Male"
-                    android:textSize="25sp"
                     android:textAlignment="center"
-                    android:textColor="@color/colorPrimaryVariant"
-                    app:chipStrokeColor="@color/colorPrimaryVariant"
-                    app:chipStrokeWidth="2dp"/>
+                    android:textSize="25sp"
+                    app:chipStrokeColor="@color/chip_stroke_color"
+                    app:chipStrokeWidth="0.75dp" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipFemale"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    style="@style/CustomChipStyle"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
-                    android:backgroundTint="@color/white"
                     android:text="Female"
                     android:textAlignment="center"
                     android:textSize="25sp"
-                    android:textColor="@color/colorPrimaryVariant"
-                    app:chipStrokeColor="@color/colorPrimaryVariant"
-                    app:chipStrokeWidth="2dp" />
+                    app:chipStrokeColor="@color/chip_stroke_color"
+                    app:chipStrokeWidth="0.75dp" />
 
             </com.google.android.material.chip.ChipGroup>
 
-        <TextView
-            android:id="@+id/vaccination"
-            android:layout_width="111dp"
-            android:layout_height="51dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:text="Vaccination Status"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="18dp"
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/vaccinationLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/genderLayout"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/genderText" />
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/vaccinationChip"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
-            app:singleSelection="true"
-            app:layout_constraintStart_toEndOf="@id/vaccination"
-            app:layout_constraintTop_toBottomOf="@id/genderChip">
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/vaccinated"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
+            <TextView
+                android:id="@+id/vaccination"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:backgroundTint="@color/colorUploadBackground"
-                android:text="Vaccinated"
-                android:textSize="25sp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="28dp"
+                android:text="Vaccinated?"
                 android:textAlignment="center"
-                android:textColor="@color/colorPrimaryVariant"
-                app:chipStrokeColor="@color/colorPrimaryVariant"
-                app:chipStrokeWidth="2dp"/>
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                app:layout_constraintStart_toStartOf="parent"/>
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/notVaccinated"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/vaccinationChip"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:backgroundTint="@color/colorUploadBackground"
-                android:text="Not Vaccinated"
-                android:textAlignment="center"
-                android:textSize="25sp"
-                android:textColor="@color/colorPrimaryVariant"
-                app:chipStrokeColor="@color/colorPrimaryVariant"
-                app:chipStrokeWidth="2dp" />
+                android:layout_height="match_parent"
+                android:layout_marginStart="130dp"
+                android:layout_marginTop="16dp"
+                app:singleSelection="true"
+                app:chipSpacingHorizontal="16dp"
+                app:layout_constraintStart_toEndOf="@id/vaccination">
 
-        </com.google.android.material.chip.ChipGroup>
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/vaccinated"
+                    style="@style/CustomChipStyle"
+                    android:layout_width="80dp"
+                    android:layout_height="50dp"
+                    android:text="Yes"
+                    android:textSize="25sp"
+                    android:textAlignment="center"
+                    app:chipStrokeWidth="0.75dp"
+                    app:chipStrokeColor="@color/chip_stroke_color"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/notVaccinated"
+                    style="@style/CustomChipStyle"
+                    android:layout_width="80dp"
+                    android:layout_height="50dp"
+                    android:text="No"
+                    android:textAlignment="center"
+                    android:textSize="25sp"
+                    app:chipStrokeWidth="0.75dp"
+                    app:chipStrokeColor="@color/chip_stroke_color"/>
+
+            </com.google.android.material.chip.ChipGroup>
+
+        </RelativeLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/Description"
@@ -260,7 +271,7 @@
             app:hintTextColor="#E8768D"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vaccinationChip">
+            app:layout_constraintTop_toBottomOf="@id/vaccinationLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/description"
