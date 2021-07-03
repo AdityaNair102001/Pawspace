@@ -50,6 +50,8 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
 
+
+        //temporary
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

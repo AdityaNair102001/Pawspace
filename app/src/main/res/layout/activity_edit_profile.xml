@@ -42,7 +42,7 @@
     </de.hdodenhof.circleimageview.CircleImageView>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fullNameTextField"
+        android:id="@+id/Description"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:startIconDrawable="@drawable/accounticonsmall"
         app:startIconTint="@color/grey"
@@ -81,7 +81,7 @@
         app:hintTextColor="#E8768D"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fullNameTextField">
+        app:layout_constraintTop_toBottomOf="@+id/Description">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/registered_email"
