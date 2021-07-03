@@ -9,6 +9,7 @@
     tools:context=".AddNewPostFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/imageContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -23,22 +24,28 @@
             android:padding="10dp"
             android:paddingBottom="10dp"
             app:cardElevation="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintEnd_toEndOf="@id/imageContainer"
+            app:layout_constraintStart_toStartOf="@id/imageContainer"
+            app:layout_constraintTop_toTopOf="@id/imageContainer">
 
-            <ImageView
-                android:id="@+id/imageView"
+            <com.smarteist.autoimageslider.SliderView
+                android:id="@+id/imageSlider"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintEnd_toEndOf="@id/card"
-                app:layout_constraintStart_toStartOf="@id/card"
-                app:layout_constraintTop_toTopOf="@id/card"
-                app:srcCompat="@drawable/dogimage" />
+                android:layout_height="300dp"
+                android:background="@color/white"
+                app:sliderIndicatorMargin="15dp"
+                app:sliderIndicatorOrientation="horizontal"
+                app:sliderIndicatorPadding="3dp"
+                app:sliderIndicatorRadius="2dp"
+                app:sliderIndicatorSelectedColor="@color/colorPrimary"
+                app:sliderIndicatorUnselectedColor="#E0E3FF"
+                app:sliderIndicatorAnimationDuration="600"
+                app:sliderIndicatorGravity="center_horizontal|bottom"
+                app:sliderScrollTimeInSec="2"
+                app:sliderAnimationDuration="600"
+                app:sliderAutoCycleDirection="back_and_forth"
+                app:sliderAutoCycleEnabled="true"
+                app:sliderStartAutoCycle="true"/>
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -47,20 +54,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@color/colorUploadBackground"
-            android:text="upload"
-            android:textColor="@color/colorPrimaryVariant"
+            android:backgroundTint="@color/white"
+            android:text="upload images"
+            android:textColor="@color/colorPrimary"
             app:cornerRadius="15dp"
             app:icon="@drawable/upload"
-            app:iconTint="@color/colorPrimaryVariant"
+            app:iconTint="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/card"
-            app:strokeColor="@color/colorPrimaryVariant"
-            app:strokeWidth="2dp" />
+            app:strokeColor="@color/colorPrimary"
+            app:strokeWidth="2dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/TextInputField"
+            android:id="@+id/Breed"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -85,7 +92,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/TextInputField2"
+            android:id="@+id/Age"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -98,7 +105,7 @@
             app:hintTextColor="@color/colorPrimaryVariant"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/TextInputField">
+            app:layout_constraintTop_toBottomOf="@id/Breed">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/age"
@@ -110,7 +117,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/TextInputField3"
+            android:id="@+id/Location"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -123,7 +130,7 @@
             app:hintTextColor="@color/colorPrimaryVariant"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/TextInputField2">
+            app:layout_constraintTop_toBottomOf="@id/Age">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/location"
@@ -148,7 +155,7 @@
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/TextInputField3"/>
+                app:layout_constraintTop_toBottomOf="@id/Location"/>
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/genderChip"
@@ -158,14 +165,14 @@
                 android:layout_marginTop="16dp"
                 app:singleSelection="true"
                 app:layout_constraintStart_toEndOf="@id/genderText"
-                app:layout_constraintTop_toBottomOf="@id/TextInputField3">
+                app:layout_constraintTop_toBottomOf="@id/Location">
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipMale"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
-                    android:backgroundTint="@color/colorUploadBackground"
+                    android:backgroundTint="@color/white"
                     android:text="Male"
                     android:textSize="25sp"
                     android:textAlignment="center"
@@ -178,7 +185,7 @@
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
-                    android:backgroundTint="@color/colorUploadBackground"
+                    android:backgroundTint="@color/white"
                     android:text="Female"
                     android:textAlignment="center"
                     android:textSize="25sp"
@@ -240,10 +247,10 @@
         </com.google.android.material.chip.ChipGroup>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/fullNameTextField"
+            android:id="@+id/Description"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
@@ -276,7 +283,7 @@
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fullNameTextField" />
+            app:layout_constraintTop_toBottomOf="@id/Description" />
 
         <TextView
             android:layout_width="wrap_content"

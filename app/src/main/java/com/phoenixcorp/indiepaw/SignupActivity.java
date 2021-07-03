@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +18,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthCredential;
@@ -26,6 +27,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import pl.droidsonroids.gif.GifImageView;
 
@@ -34,9 +40,12 @@ public class SignupActivity extends AppCompatActivity {
     Button signup, login, googleSignUp;
     GifImageView gif;
     TextView signinText,greetings;
-    TextInputLayout email, password,name;
+    TextInputLayout email, password, fullName;
 
+    String userID;
+    FirebaseFirestore fStore;
     FirebaseAuth auth;
+    DocumentReference documentReference;
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 9001;
 
@@ -53,20 +62,20 @@ public class SignupActivity extends AppCompatActivity {
         greetings = findViewById(R.id.Greetings);
         email = findViewById(R.id.emailTextField);
         password = findViewById(R.id.PasswordTextField);
-        name = findViewById(R.id.fullNameTextField);
+        fullName = findViewById(R.id.Description);
         googleSignUp = findViewById(R.id.google_signup);
 
         auth = FirebaseAuth.getInstance();
-
+        fStore = FirebaseFirestore.getInstance();
 
         signup.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 // Validate and store data in firebase
 
-                String fullNameText = name.getEditText().getText().toString();
-                String emailText = email.getEditText().getText().toString();
-                String passwordText = password.getEditText().getText().toString();
+                String fullNameText = fullName.getEditText().getText().toString();
+                String emailText = email.getEditText().getText().toString().trim();
+                String passwordText = password.getEditText().getText().toString().trim();
 
                 registerUser(fullNameText,emailText,passwordText);
 
@@ -96,11 +105,11 @@ public class SignupActivity extends AppCompatActivity {
         });
 
 
-        createRequest();
 
         googleSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                createRequest();
                 signIn();
             }
         });
@@ -119,6 +128,52 @@ public class SignupActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         Toast.makeText(SignupActivity.this,"Sign Up Successful!",Toast.LENGTH_SHORT).show();
+
+
+                        //storing the data in firestore
+                        userID = auth.getCurrentUser().getUid();
+                        documentReference = fStore.collection("Users").document(userID);
+                        Map<String, Object> user = new HashMap<>();
+                        user.put("fullname", fullNameText);
+                        user.put("email", emailText);
+                        documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(SignupActivity.this, "Data Stored", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(SignupActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                       /* fStore.collection("Users").document(userID).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful()){
+                                    Toast.makeText(SignupActivity.this, "User Added to the database", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(SignupActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });*/
+                       /* documentReference.set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Toast.makeText(SignupActivity.this, "New User Data Stored", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(SignupActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });*/
+
+
 
                         //next activity
                         Intent intent = new Intent(SignupActivity.this, DefaultPageActivity.class);
@@ -142,12 +197,12 @@ public class SignupActivity extends AppCompatActivity {
 
     private boolean validateName(String fullNameText) {
         if(fullNameText.isEmpty()){
-            name.setError("Required");
+            fullName.setError("Required");
             return false;
         }
         else{
-            name.setError(null);
-            name.setErrorEnabled(false);
+            fullName.setError(null);
+            fullName.setErrorEnabled(false);
             return true;
         }
 
