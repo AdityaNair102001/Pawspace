@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
@@ -61,6 +63,23 @@ public class DefaultPageActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+        View topAppBar=findViewById(R.id.actionBarDefaultPage);
+        ImageView chatButton=topAppBar.findViewById(R.id.chat);
+
+        Intent intent=new Intent(this,ChatActivity.class);
+
+
+        chatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("chat", "onClick: Hi");
+                startActivity(intent);
+
+            }
+        });
+
 
 
     }

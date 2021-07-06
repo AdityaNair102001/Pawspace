@@ -9,7 +9,7 @@
     tools:context=".DefaultPageActivity">
 
     <include
-        android:id="@+id/actionbar"
+        android:id="@+id/actionBarDefaultPage"
         layout="@layout/activity_top_app_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,12 +20,12 @@
         android:id="@+id/Fragment_Container"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_below="@id/actionbar"
+        android:layout_below="@id/actionBarDefaultPage"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/actionbar">
+        app:layout_constraintTop_toBottomOf="@+id/actionBarDefaultPage">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

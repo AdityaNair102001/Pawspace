@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.google.gson.Gson;
 
 public class TopAppBarActivity extends AppCompatActivity {
 
@@ -18,11 +21,11 @@ public class TopAppBarActivity extends AppCompatActivity {
 
         chatbutton = findViewById(R.id.chat);
 
-        chatbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),ChatActivity.class));
-            }
-        });
+        Gson gson = new Gson();
+        String chatButton = gson.toJson(chatbutton);
+        Intent intent=new Intent(this,DefaultPageActivity.class);
+        intent.putExtra("myjson", chatButton);
+        startActivity(intent);
+
     }
 }

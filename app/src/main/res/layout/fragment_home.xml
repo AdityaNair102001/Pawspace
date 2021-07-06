@@ -1,8 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/FeedList"
-    tools:context=".HomeFragment"/>
+    tools:context=".HomeFragment">
+
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--        android:id="@+id/actionbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Pawspace"-->
+<!--        android:textSize="42sp">-->
+
+<!--        <com.google.android.material.appbar.MaterialToolbar-->
+<!--            android:id="@+id/actionbarToolbar"-->
+<!--            style="@style/Widget.MaterialComponents.Toolbar.Primary"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="?attr/actionBarSize"-->
+<!--            app:titleTextColor="@color/black"-->
+<!--            app:titleTextAppearance="@style/TextAppearance.MyApp.Headline1"-->
+<!--            app:title="@string/app_name"-->
+
+<!--            />-->
+
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/FeedList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:background="@color/white">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+<!--    android:layout_marginTop="?attr/actionBarSize"-->
+<!--    android:layout_marginBottom="?attr/actionBarSize"-->
+
+</FrameLayout>
+
+
+
