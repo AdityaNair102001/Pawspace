@@ -182,7 +182,7 @@
                     android:layout_height="50dp"
                     android:text="Male"
                     android:textAlignment="center"
-                    android:textSize="25sp"
+                    android:textSize="18sp"
                     app:chipStrokeColor="@color/chip_stroke_color"
                     app:chipStrokeWidth="0.75dp" />
 
@@ -193,7 +193,7 @@
                     android:layout_height="50dp"
                     android:text="Female"
                     android:textAlignment="center"
-                    android:textSize="25sp"
+                    android:textSize="18sp"
                     app:chipStrokeColor="@color/chip_stroke_color"
                     app:chipStrokeWidth="0.75dp" />
 
@@ -237,7 +237,7 @@
                     android:layout_width="80dp"
                     android:layout_height="50dp"
                     android:text="Yes"
-                    android:textSize="25sp"
+                    android:textSize="18sp"
                     android:textAlignment="center"
                     app:chipStrokeWidth="0.75dp"
                     app:chipStrokeColor="@color/chip_stroke_color"/>
@@ -249,7 +249,7 @@
                     android:layout_height="50dp"
                     android:text="No"
                     android:textAlignment="center"
-                    android:textSize="25sp"
+                    android:textSize="18sp"
                     app:chipStrokeWidth="0.75dp"
                     app:chipStrokeColor="@color/chip_stroke_color"/>
 

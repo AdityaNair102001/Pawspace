@@ -125,7 +125,7 @@ public class MyPostFragment extends Fragment {
 
         MyPostListAdapter adapter=new MyPostListAdapter(imageUrls,documentID, this);
         myPostList.setLayoutManager(new GridLayoutManager(this.getContext(),3));
-        myPostList.setItemViewCacheSize(20);
+        myPostList.setItemViewCacheSize(15);
         myPostList.setDrawingCacheEnabled(true);
         myPostList.setAdapter(adapter);
     }
