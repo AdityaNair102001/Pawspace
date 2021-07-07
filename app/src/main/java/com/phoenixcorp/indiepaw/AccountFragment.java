@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -21,7 +22,7 @@ import com.google.android.material.tabs.TabLayout;
  */
 public class AccountFragment extends Fragment implements TabLayout.OnTabSelectedListener {
 
-    ViewPager viewPager;
+    ViewPager2 viewPager;
     TabLayout tabLayout;
     Button editProfile;
 
@@ -78,10 +79,15 @@ public class AccountFragment extends Fragment implements TabLayout.OnTabSelected
         viewPager = view.findViewById(R.id.viewpager);
         tabLayout = view.findViewById(R.id.tablayout) ;
 
-        PagerAdapter pagerAdapter = new PagerAdapter(getFragmentManager(),tabLayout.getTabCount());
+        FragmentManager fm = getFragmentManager();
+
+        PagerAdapter pagerAdapter = new PagerAdapter(fm,getLifecycle());
 
         viewPager.setAdapter(pagerAdapter);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+        tabLayout.addTab(tabLayout.newTab().setText("My Posts"));
+        tabLayout.addTab(tabLayout.newTab().setText("Bookmarked"));
+
 
         tabLayout.addOnTabSelectedListener(this);
 
@@ -94,9 +100,15 @@ public class AccountFragment extends Fragment implements TabLayout.OnTabSelected
             }
         });
 
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                tabLayout.selectTab(tabLayout.getTabAt(position));
+            }
+        });
+
         return view;
     }
-
 
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
