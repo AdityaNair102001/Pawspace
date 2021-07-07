@@ -62,6 +62,12 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
 
 
+    implementation 'com.mesibo.api:mesibo:1.5.2'
+
+    implementation 'com.mesibo.api:ui:1.5.2'
+
+    implementation 'com.android.volley:volley:1.2.0'
+
 
 
 }
