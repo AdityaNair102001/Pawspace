@@ -7,7 +7,4 @@
     android:background="@color/white"
     tools:context=".ChatActivity">
 
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

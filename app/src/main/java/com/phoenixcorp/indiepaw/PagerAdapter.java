@@ -4,35 +4,30 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.lifecycle.Lifecycle;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-public class PagerAdapter extends FragmentPagerAdapter {
+public class PagerAdapter extends FragmentStateAdapter {
 
     int countTabs;
 
-    public PagerAdapter(@NonNull FragmentManager fm, int countTabs) {
-        super(fm, countTabs);
-        this.countTabs = countTabs;
+    public PagerAdapter(@NonNull FragmentManager fm, Lifecycle lifecycle) {
+        super(fm, lifecycle);
     }
 
     @NonNull
     @Override
-    public Fragment getItem(int position) {
-        switch(position){
-
-            case 0:
-                MyPostFragment myPostFragment = new MyPostFragment();
-                return myPostFragment;
+    public Fragment createFragment(int position) {
+        switch (position){
             case 1:
-                BookmarkFragment bookmarkFragment = new BookmarkFragment();
-                return bookmarkFragment;
-            default:
-                return null;
+                return new BookmarkFragment();
         }
-
+        return new MyPostFragment();
     }
 
+
     @Override
-    public int getCount() {
-        return countTabs;
+    public int getItemCount() {
+        return 2;
     }
 }

@@ -84,7 +84,7 @@ public class MyPostFragment extends Fragment {
         myPostList = view.findViewById(R.id.myPosts);
         pd = view.findViewById(R.id.progressBarMyPosts);
 
-        pd.setVisibility(View.INVISIBLE);
+        pd.setVisibility(View.VISIBLE);
 
         ArrayList<String> documentID = new ArrayList<>();
 
@@ -108,7 +108,7 @@ public class MyPostFragment extends Fragment {
 
                                         imageUrlsFromDB.put(documentSnapshot.getId(),documentList.get(documentList.size()-1).getString("url"));
 
-                                        adapterHandler(imageUrlsFromDB,documentID);
+                                        adapterHandler(imageUrlsFromDB,documentID,pd);
                                     }
                                 });
                     }
@@ -121,8 +121,10 @@ public class MyPostFragment extends Fragment {
     return view;
     }
 
-    private void adapterHandler(HashMap<String,String>imageUrls,ArrayList<String>documentID) {
+    private void adapterHandler(HashMap<String,String>imageUrls,ArrayList<String>documentID, CircularProgressIndicator pd) {
 
+
+        pd.setVisibility(View.INVISIBLE);
         MyPostListAdapter adapter=new MyPostListAdapter(imageUrls,documentID, this);
         myPostList.setLayoutManager(new GridLayoutManager(this.getContext(),3));
         myPostList.setItemViewCacheSize(15);
