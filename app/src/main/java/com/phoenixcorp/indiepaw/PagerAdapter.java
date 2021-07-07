@@ -20,8 +20,8 @@ public class PagerAdapter extends FragmentPagerAdapter {
         switch(position){
 
             case 0:
-                PostFragment postFragment = new PostFragment();
-                return postFragment;
+                MyPostFragment myPostFragment = new MyPostFragment();
+                return myPostFragment;
             case 1:
                 BookmarkFragment bookmarkFragment = new BookmarkFragment();
                 return bookmarkFragment;
