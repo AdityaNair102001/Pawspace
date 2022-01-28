@@ -1,54 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:orientation="horizontal"
-    android:padding="8dp">
-
+    android:padding="4dp">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:padding="10dp"
         android:paddingBottom="10dp"
+        app:cardCornerRadius="10dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
         app:cardElevation="2dp"
-        app:cardCornerRadius="30dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white">
-
-
-            <!--                        <ImageButton-->
-            <!--                            android:id="@+id/bookmarkButton"-->
-            <!--                            android:layout_width="50dp"-->
-            <!--                            android:layout_height="50dp"-->
-            <!--                            android:layout_marginTop="8dp"-->
-            <!--                            android:layout_marginEnd="16dp"-->
-            <!--                            android:scaleType="fitCenter"-->
-            <!--                            android:adjustViewBounds="true"-->
-            <!--                            android:backgroundTint="@color/white"-->
-            <!--                            android:src="@drawable/bokmark_button"-->
-            <!--                            app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                            app:layout_constraintTop_toTopOf="parent" />-->
-
-            <CheckBox
-                android:id="@+id/bookmarkButton"
-                android:layout_width="24dp"
-                android:layout_height="26dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
-                android:background="@drawable/bokmark_button"
-                android:button="@null"
-                android:checked="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/ProfilePicture"
@@ -58,99 +37,127 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:src="@drawable/dogprofile"
-                app:layout_constraintBottom_toTopOf="@+id/imageView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
             </de.hdodenhof.circleimageview.CircleImageView>
-
 
             <TextView
                 android:id="@+id/Username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="Username"
+                android:layout_marginTop="24dp"
+                android:text=""
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/ProfilePicture"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
-            <TextView
-                android:id="@+id/secondaryText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="Secondary Text"
-                android:textColor="@color/black"
-                android:textSize="10sp"
-                app:layout_constraintBottom_toTopOf="@+id/imageView"
-                app:layout_constraintStart_toEndOf="@+id/ProfilePicture"
-                app:layout_constraintTop_toBottomOf="@+id/Username" />
-
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="361dp"
-                android:layout_height="233dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
+            <CheckBox
+                android:id="@+id/expandableMenuButton"
+                android:layout_width="24dp"
+                android:layout_height="26dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/menu_icon"
+                android:button="@null"
+                android:checked="false"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/secondaryText"
-                app:srcCompat="@drawable/dogimage" />
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.smarteist.autoimageslider.SliderView
+                android:id="@+id/imageSlider"
+                android:layout_width="match_parent"
+                android:layout_height="325dp"
+                android:background="@color/white"
+                android:layout_marginTop="8dp"
+                app:sliderIndicatorMargin="15dp"
+                app:sliderIndicatorOrientation="horizontal"
+                app:sliderIndicatorPadding="3dp"
+                app:sliderIndicatorRadius="2dp"
+                app:sliderIndicatorSelectedColor="@color/colorPrimary"
+                app:sliderIndicatorUnselectedColor="#E0E3FF"
+                app:sliderIndicatorAnimationDuration="600"
+                app:sliderIndicatorGravity="center_horizontal|bottom"
+                app:sliderScrollTimeInSec="2"
+                app:layout_constraintTop_toBottomOf="@id/Username"/>
+            <!--                app:sliderAnimationDuration="600"-->
+            <!--                app:sliderAutoCycleDirection="back_and_forth"-->
+            <!--                app:sliderAutoCycleEnabled="true"-->
+            <!--                app:sliderStartAutoCycle="true"-->
 
 
             <com.google.android.material.chip.ChipGroup
-                android:id="@+id/chip_group_main"
+                android:id="@+id/chipGroup"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="16dp"
                 app:chipSpacingHorizontal="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView"
-                app:layout_constraintVertical_bias="0.20">
+                app:layout_constraintTop_toBottomOf="@id/imageSlider">
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/BreedChip"
+                    android:id="@+id/breed"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingHorizontal="2dp"
-                    android:text="Labrador"
-                    app:chipBackgroundColor="@color/colorPrimaryVariant"
-                    app:closeIconEnabled="false"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                    android:layout_height="50dp"
+                    android:text="Breed"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/colorPrimary"
+                    app:chipStrokeColor="@color/colorPrimary"
+                    app:chipStrokeWidth="0.75dp" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/VaccinationChip"
+                    android:id="@+id/gender"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingHorizontal="2dp"
-                    android:text="Not Vaccinated"
-                    app:chipBackgroundColor="@color/colorPrimaryVariant"
-                    app:closeIconEnabled="false"
-                    app:layout_constraintStart_toEndOf="@+id/BreedChip"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                    android:layout_height="50dp"
+                    android:text="Gender"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/colorPrimary"
+                    app:chipStrokeColor="@color/colorPrimary"
+                    app:chipStrokeWidth="0.75dp"/>
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/AgeChip"
+                    android:id="@+id/age"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingHorizontal="2dp"
-                    android:text="age"
-                    app:chipBackgroundColor="@color/colorPrimaryVariant"
-                    app:closeIconEnabled="false"
-                    app:layout_constraintStart_toEndOf="@+id/VaccinationChip"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                    android:layout_height="50dp"
+                    android:text="Age"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/colorPrimary"
+                    app:chipStrokeColor="@color/colorPrimary"
+                    app:chipStrokeWidth="0.75dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="Location"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/colorPrimary"
+                    app:chipStrokeColor="@color/colorPrimary"
+                    app:chipStrokeWidth="0.75dp"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/vaccine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="Vaccine"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/colorPrimary"
+                    app:chipStrokeColor="@color/colorPrimary"
+                    app:chipStrokeWidth="0.75dp"/>
 
             </com.google.android.material.chip.ChipGroup>
 
@@ -159,29 +166,227 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:text="Pet Bio"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/chip_group_main" />
+                app:layout_constraintTop_toBottomOf="@+id/chipGroup"/>
 
             <TextView
-                android:id="@+id/text"
-                android:layout_width="wrap_content"
+                android:id="@+id/Description"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="description"
-                android:textColor="@color/black"
-                android:textSize="18sp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="#FFEFF2"
+                android:paddingLeft="7dp"
+                android:paddingTop="10dp"
+                android:paddingRight="7dp"
+                android:paddingBottom="10dp"
+                android:text=""
+                android:textColor="@color/darkGrey"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/PetBio" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <!--            <com.google.android.material.button.MaterialButton-->
+            <!--                android:id="@+id/post"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="chat"-->
+            <!--                app:icon="@drawable/chat1"-->
+            <!--                app:iconTint="@color/white"-->
+            <!--                app:cornerRadius="20dp"-->
+            <!--                android:backgroundTint="@color/colorPrimaryVariant"-->
+            <!--                android:textColor="@color/white"-->
+            <!--                android:layout_marginTop="16dp"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@id/Description" />-->
 
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
-</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    <com.google.android.material.card.MaterialCardView-->
+<!--        android:id="@+id/card"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="8dp"-->
+<!--        android:padding="10dp"-->
+<!--        android:paddingBottom="10dp"-->
+<!--        app:cardElevation="2dp"-->
+<!--        app:cardCornerRadius="30dp">-->
+
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="@color/white">-->
+
+
+<!--            &lt;!&ndash;                        <ImageButton&ndash;&gt;-->
+<!--            &lt;!&ndash;                            android:id="@+id/bookmarkButton"&ndash;&gt;-->
+<!--            &lt;!&ndash;                            android:layout_width="50dp"&ndash;&gt;-->
+<!--            &lt;!&ndash;                            android:layout_height="50dp"&ndash;&gt;-->
+<!--            &lt;!&ndash;                            android:layout_marginTop="8dp"&ndash;&gt;-->
+<!--            &lt;!&ndash;                            android:layout_marginEnd="16dp"&ndash;&gt;-->
+<!--            &lt;!&ndash;                            android:scaleType="fitCenter"&ndash;&gt;-->
+<!--            &lt;!&ndash;                            android:adjustViewBounds="true"&ndash;&gt;-->
+<!--            &lt;!&ndash;                            android:backgroundTint="@color/white"&ndash;&gt;-->
+<!--            &lt;!&ndash;                            android:src="@drawable/bokmark_button"&ndash;&gt;-->
+<!--            &lt;!&ndash;                            app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
+<!--            &lt;!&ndash;                            app:layout_constraintTop_toTopOf="parent" />&ndash;&gt;-->
+
+<!--            <CheckBox-->
+<!--                android:id="@+id/bookmarkButton"-->
+<!--                android:layout_width="24dp"-->
+<!--                android:layout_height="26dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:layout_marginEnd="32dp"-->
+<!--                android:background="@drawable/bokmark_button"-->
+<!--                android:button="@null"-->
+<!--                android:checked="false"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--            <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                android:id="@+id/ProfilePicture"-->
+<!--                android:layout_width="45dp"-->
+<!--                android:layout_height="45dp"-->
+<!--                android:layout_marginStart="16dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:layout_marginBottom="8dp"-->
+<!--                android:src="@drawable/dogprofile"-->
+<!--                app:layout_constraintBottom_toTopOf="@+id/imageView"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent">-->
+
+<!--            </de.hdodenhof.circleimageview.CircleImageView>-->
+
+
+<!--            <TextView-->
+<!--                android:id="@+id/Username"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="16dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:text="Username"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="18sp"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/ProfilePicture"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+
+<!--            <TextView-->
+<!--                android:id="@+id/secondaryText"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="16dp"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:layout_marginBottom="8dp"-->
+<!--                android:text="Secondary Text"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="10sp"-->
+<!--                app:layout_constraintBottom_toTopOf="@+id/imageView"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/ProfilePicture"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/Username" />-->
+
+
+<!--            <ImageView-->
+<!--                android:id="@+id/imageView"-->
+<!--                android:layout_width="361dp"-->
+<!--                android:layout_height="233dp"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:layout_marginStart="4dp"-->
+<!--                android:layout_marginEnd="4dp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/secondaryText"-->
+<!--                app:srcCompat="@drawable/dogimage" />-->
+
+
+<!--            <com.google.android.material.chip.ChipGroup-->
+<!--                android:id="@+id/chip_group_main"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="16dp"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:layout_marginBottom="8dp"-->
+<!--                app:chipSpacingHorizontal="16dp"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/imageView"-->
+<!--                app:layout_constraintVertical_bias="0.20">-->
+
+<!--                <com.google.android.material.chip.Chip-->
+<!--                    android:id="@+id/BreedChip"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:paddingHorizontal="2dp"-->
+<!--                    android:text="Labrador"-->
+<!--                    app:chipBackgroundColor="@color/colorPrimaryVariant"-->
+<!--                    app:closeIconEnabled="false"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/imageView" />-->
+
+<!--                <com.google.android.material.chip.Chip-->
+<!--                    android:id="@+id/VaccinationChip"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:paddingHorizontal="2dp"-->
+<!--                    android:text="Not Vaccinated"-->
+<!--                    app:chipBackgroundColor="@color/colorPrimaryVariant"-->
+<!--                    app:closeIconEnabled="false"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/BreedChip"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/imageView" />-->
+
+<!--                <com.google.android.material.chip.Chip-->
+<!--                    android:id="@+id/AgeChip"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:paddingHorizontal="2dp"-->
+<!--                    android:text="age"-->
+<!--                    app:chipBackgroundColor="@color/colorPrimaryVariant"-->
+<!--                    app:closeIconEnabled="false"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/VaccinationChip"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/imageView" />-->
+
+<!--            </com.google.android.material.chip.ChipGroup>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/PetBio"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="16dp"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:text="Pet Bio"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textStyle="bold"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/chip_group_main" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/text"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="16dp"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:layout_marginBottom="8dp"-->
+<!--                android:text="description"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="18sp"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/PetBio" />-->
+
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--    </com.google.android.material.card.MaterialCardView>-->

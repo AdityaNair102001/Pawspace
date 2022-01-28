@@ -9,14 +9,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.slider.Slider;
+import com.smarteist.autoimageslider.SliderView;
+
+import java.util.ArrayList;
+
 public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.FeedListViewHolder> {
 
     private String[] data;
     private String[] location;
-    public FeedListAdapter(String[] data, String[] location)
+    private int[][] dogimages;
+    private SliderView postImageSlider;
+    public FeedListAdapter(String[] data, String[] location, int[][] dogimages, SliderView postImageSlider )
     {
         this.data=data;
         this.location=location;
+        this.dogimages = dogimages;
+        this.postImageSlider = postImageSlider;
     }
 
     @NonNull
@@ -32,7 +41,10 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.FeedLi
         String title=data[position];
         String loc=location[position];
         holder.username.setText(title);
-        holder.secondaryText.setText(loc);
+
+        int[] images = dogimages[position];
+        adapterHandler(images);
+//        holder.secondaryText.setText(loc);
     }
 
     @Override
@@ -42,7 +54,7 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.FeedLi
 
     public class FeedListViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView imageView;
+        SliderView imageView;
         ImageView circleImageView;
         TextView username;
         TextView secondaryText;
@@ -50,12 +62,17 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.FeedLi
 
         public FeedListViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView=itemView.findViewById(R.id.imageView);
+            imageView=itemView.findViewById(R.id.imageSlider);
             circleImageView=itemView.findViewById(R.id.ProfilePicture);
             username=itemView.findViewById(R.id.Username);
-            secondaryText=itemView.findViewById(R.id.secondaryText);
+          //  secondaryText=itemView.findViewById(R.id.secondaryText);
             //bookmark = itemView.findViewById(R.id.bookmarkButton);
 
         }
+    }
+    private void adapterHandler(int[] images) {
+        HomeFragmentSliderAdapter adapter = new HomeFragmentSliderAdapter(images);
+        postImageSlider.setSliderAdapter(adapter);
+
     }
 }

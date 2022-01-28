@@ -21,8 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:title="Edit Profile"
-            app:titleTextColor="@color/white"
-            app:titleMarginStart="80dp" />
+            app:titleTextColor="@color/white"/>
+<!--            app:titleMarginStart="80dp" />-->
 
 
     </com.google.android.material.appbar.AppBarLayout>

@@ -1,5 +1,6 @@
 package com.phoenixcorp.indiepaw;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
+import com.smarteist.autoimageslider.SliderView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,6 +25,8 @@ public class HomeFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -61,6 +66,8 @@ public class HomeFragment extends Fragment {
     }
 
     RecyclerView feedList;
+    SliderView postImageSlider;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,9 +78,15 @@ public class HomeFragment extends Fragment {
         feedList=view.findViewById(R.id.FeedList);
         feedList.setHasFixedSize(true);
         feedList.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL,false));
-        String[] dogs={"Labrador", "Pomerian", "Pug","Pitbull","Stray","Indian","Golden Retriever", "Husky", "Labrador","Husky","Indian","Pug","Stray"};
+        postImageSlider = view.findViewById(R.id.imageSlider);
+
+        int[][] dogimages = {{R.drawable.dogimage,R.drawable.dogimage},{R.drawable.dogimage,R.drawable.dogimage},{R.drawable.dogimage,R.drawable.dogimage},
+                                {R.drawable.dogimage,R.drawable.dogimage},{R.drawable.dogimage,R.drawable.dogimage},{R.drawable.dogimage,R.drawable.dogimage},
+                {R.drawable.dogimage,R.drawable.dogimage},{R.drawable.dogimage,R.drawable.dogimage},{R.drawable.dogimage,R.drawable.dogimage},
+                {R.drawable.dogimage,R.drawable.dogimage},{R.drawable.dogimage,R.drawable.dogimage},{R.drawable.dogimage,R.drawable.dogimage},{R.drawable.dogimage,R.drawable.dogimage}};
+        String[] dogs={"Aditya", "Krishnakant", "Prem","KKhushi","Pitbull","Anurag","Solanki", "Varad", "Shubham","Gracy","Shreyas","Dev","Ayush"};
         String[] loacation={"Kalyan","Ulhasnagar","Kharghar","CST","Dadar","Thane","Kurla","Andheri","Dombivili","Kalyan","Khadakpada","Radha Nagar","Scion"};
-        feedList.setAdapter(new FeedListAdapter(dogs,loacation));
+        feedList.setAdapter(new FeedListAdapter(dogs,loacation,dogimages,postImageSlider));
 
 
 

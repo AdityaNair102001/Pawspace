@@ -87,7 +87,7 @@ public class AccountFragment extends Fragment implements TabLayout.OnTabSelected
 
         tabLayout.addTab(tabLayout.newTab().setText("My Posts"));
         tabLayout.addTab(tabLayout.newTab().setText("Bookmarked"));
-
+        tabLayout.setTabMode(TabLayout.MODE_FIXED);
 
         tabLayout.addOnTabSelectedListener(this);
 

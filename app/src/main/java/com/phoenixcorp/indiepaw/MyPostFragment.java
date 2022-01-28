@@ -86,6 +86,13 @@ public class MyPostFragment extends Fragment {
 
         pd.setVisibility(View.VISIBLE);
 
+        ArrayList<String> breedFromDB = new ArrayList<>();
+        ArrayList<String> ageFromDB = new ArrayList<>();
+        ArrayList<String> vaccineFromDB = new ArrayList<>();
+        ArrayList<String> genderFromDB = new ArrayList<>();
+        ArrayList<String> locationFromDB = new ArrayList<>();
+        ArrayList<String> descriptionFromDB = new ArrayList<>();
+   //     ArrayList<String> nameFromDB = new ArrayList<>();
         ArrayList<String> documentID = new ArrayList<>();
 
         HashMap<String, String> imageUrlsFromDB=new HashMap<>();
@@ -98,6 +105,12 @@ public class MyPostFragment extends Fragment {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
                     for(DocumentSnapshot documentSnapshot: Objects.requireNonNull(task.getResult())){
+                        breedFromDB.add(documentSnapshot.getString("Breed"));
+                        ageFromDB.add(documentSnapshot.getString("Age"));
+                        vaccineFromDB.add(documentSnapshot.getString("Vaccine"));
+                        genderFromDB.add(documentSnapshot.getString("Gender"));
+                        locationFromDB.add(documentSnapshot.getString("location"));
+                      //  descriptionFromDB.add(documentSnapshot.getString("Description"));
                         documentID.add(documentSnapshot.getId());
 
                         db.collection("Users").document(currentUser).collection("my posts").document(documentSnapshot.getId()).collection("urls").get()
@@ -108,7 +121,7 @@ public class MyPostFragment extends Fragment {
 
                                         imageUrlsFromDB.put(documentSnapshot.getId(),documentList.get(documentList.size()-1).getString("url"));
 
-                                        adapterHandler(imageUrlsFromDB,documentID,pd);
+                                        adapterHandler(breedFromDB,ageFromDB,vaccineFromDB,genderFromDB,locationFromDB,descriptionFromDB,imageUrlsFromDB,documentID,pd);
                                     }
                                 });
                     }
@@ -121,12 +134,14 @@ public class MyPostFragment extends Fragment {
     return view;
     }
 
-    private void adapterHandler(HashMap<String,String>imageUrls,ArrayList<String>documentID, CircularProgressIndicator pd) {
+    private void adapterHandler(ArrayList<String> breedFromDB, ArrayList<String> ageFromDB, ArrayList<String> vaccineFromDB, ArrayList<String> genderFromDB, ArrayList<String> locationFromDB, ArrayList<String> descriptionFromDB, HashMap<String, String> imageUrls, ArrayList<String> documentID, CircularProgressIndicator pd) {
 
 
         pd.setVisibility(View.INVISIBLE);
-        MyPostListAdapter adapter=new MyPostListAdapter(imageUrls,documentID, this);
-        myPostList.setLayoutManager(new GridLayoutManager(this.getContext(),3));
+        MyPostListAdapter adapter=new MyPostListAdapter(breedFromDB,ageFromDB,vaccineFromDB,genderFromDB,locationFromDB,descriptionFromDB,imageUrls,documentID, this);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this.getContext(),3);
+       // gridLayoutManager.setReverseLayout(true);
+        myPostList.setLayoutManager(gridLayoutManager);
         myPostList.setItemViewCacheSize(15);
         myPostList.setDrawingCacheEnabled(true);
         myPostList.setAdapter(adapter);

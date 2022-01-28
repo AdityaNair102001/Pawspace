@@ -21,7 +21,13 @@ import java.util.zip.Inflater;
 
 public class MyPostListAdapter extends RecyclerView.Adapter<MyPostListAdapter.MyPostListViewHolder> {
 
+    ArrayList<String> breedFromDB;
     ArrayList<String> documentID;
+    ArrayList<String> ageFromDB;
+    ArrayList<String> vaccineFromDB;
+    ArrayList<String> genderFromDB;
+    ArrayList<String> locationFromDB;
+ //   ArrayList<String> descriptionFromDB;
 
     HashMap<String, String> imageUrls;
 
@@ -29,7 +35,14 @@ public class MyPostListAdapter extends RecyclerView.Adapter<MyPostListAdapter.My
 
 
 
-    public MyPostListAdapter(HashMap<String,String>imageUrls,ArrayList<String>documentID, MyPostFragment myPostsFragment) {
+    public MyPostListAdapter(ArrayList<String> breedFromDB, ArrayList<String> ageFromDB, ArrayList<String> vaccineFromDB, ArrayList<String> genderFromDB, ArrayList<String> locationFromDB, ArrayList<String> descriptionFromDB, HashMap<String, String> imageUrls, ArrayList<String> documentID, MyPostFragment myPostsFragment) {
+
+        this.breedFromDB = breedFromDB;
+        this.ageFromDB = ageFromDB;
+        this.vaccineFromDB = vaccineFromDB;
+        this.genderFromDB = genderFromDB;
+        this.locationFromDB = locationFromDB;
+     //   this.descriptionFromDB = descriptionFromDB;
         this.documentID = documentID;
         this.imageUrls = imageUrls;
         this.myPostFragment = myPostsFragment;
@@ -55,6 +68,13 @@ public class MyPostListAdapter extends RecyclerView.Adapter<MyPostListAdapter.My
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(myPostFragment.getContext(),MyPostsDescriptionActivity.class);
+                intent.putExtra("Breed",breedFromDB.get(position));
+                intent.putExtra("Age",ageFromDB.get(position));
+                intent.putExtra("Vaccine",vaccineFromDB.get(position));
+                intent.putExtra("Gender",genderFromDB.get(position));
+                intent.putExtra("Location",locationFromDB.get(position));
+             //   intent.putExtra("Description",genderFromDB.get(position));
+                intent.putExtra("DocumentID",documentID.get(position));
                 myPostFragment.startActivity(intent);
             }
         });

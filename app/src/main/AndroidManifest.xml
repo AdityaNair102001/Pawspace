@@ -13,7 +13,7 @@
         android:roundIcon="@drawable/app_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.IndiePaw">
-        <activity android:name=".MyPostsDescriptionActivity"></activity>
+        <activity android:name=".MyPostsDescriptionActivity" />
         <activity android:name=".ChatActivity" />
         <activity android:name=".TopAppBarActivity" />
         <activity android:name=".EditProfileActivity" />

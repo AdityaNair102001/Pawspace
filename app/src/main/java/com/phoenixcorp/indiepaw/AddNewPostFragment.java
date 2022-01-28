@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -134,47 +135,70 @@ public class AddNewPostFragment extends Fragment {
             String ageVal = age.getText().toString().trim();
             String locationVal = location.getText().toString().trim();
             String descriptionVal = description.getText().toString().trim();
-            String genderVal="N/A", vaccineVal="N/A";
+            String genderVal="Gender: N/A", vaccineVal="Vaccination: N/A";
+
 
             genderid = gender.getCheckedChipId();
             vaccineid = vaccine.getCheckedChipId();
 
-            if(genderid ==2131296396){
-                genderVal = "Male";
-            }
-            else if(genderid ==2131296395)
-            {
-                genderVal ="Female";
-            }
+//            String selectedGenderChipText = gender.findViewById(gender.getCheckedChipId()).toString() ;
+//            String selectedVaccineChipText = vaccine.findViewById(vaccine.getCheckedChipId()).toString();
 
-            if(vaccineid ==2131296706){
-                vaccineVal = "Vaccinated";
-            }
-            else if(vaccineid ==2131296556)
-            {
-                vaccineVal ="Not Vaccinated";
-            }
+//            gender.setOnCheckedChangeListener(  , isChecked ->{
+//
+//            });
+//            genderVal = selectedGenderChipText;
+//            vaccineVal = selectedVaccineChipText;
 
+//            if(genderid ==2131296396){
+//                genderVal = "Male";
+//            }
+//            else if(genderid ==2131296395)
+//            {
+//                genderVal ="Female";
+//            }
+//            else if(genderid==-1)
+//            {
+//                genderVal="Gender:N/A";
+//            }
+//
+//            if(vaccineid ==2131296706){
+//                vaccineVal = "Vaccinated";
+//            }
+//            else if(vaccineid ==2131296556)
+//            {
+//                vaccineVal ="Not Vaccinated";
+//            }
+//            else if(vaccineid==-1)
+//            {
+//                vaccineVal="Vaccination:N/A";
+//            }
             final String timeStamp = Long.toString(System.currentTimeMillis());
             final String documentID = timeStamp+currentUser;
 
             if(images.isEmpty()){
 
-                Toast.makeText(getActivity(),"Please select images.",Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(),"Please select images."+genderid+"--"+vaccineid,Toast.LENGTH_LONG).show();
 
             }
             else{
 
+                if(TextUtils.isEmpty(breedVal)){
+                    breedVal="Breed: N/A";
+                }
+                if(TextUtils.isEmpty(ageVal)){
+                    ageVal="Breed: N/A";
+                }
 
                 if(TextUtils.isEmpty(locationVal)){
                     location.setError("Location is required");
                     return;
                    // Toast.makeText(getActivity(), "Location is required", Toast.LENGTH_SHORT).show();
                 }
-                if(descriptionWordCount(descriptionVal)>=20){
-                    description.setError("Word limit of 20");
-                    return;
-                }
+//                if(descriptionWordCount(descriptionVal)>=20){
+//                    description.setError("Word limit of 20");
+//                    return;
+//                }
                 else{
                     uploadImages(db,pd,documentID,currentUser);
                     uploadData(db,pd,documentID,currentUser,breedVal,ageVal,locationVal,descriptionVal,genderVal,vaccineVal);
@@ -188,14 +212,14 @@ public class AddNewPostFragment extends Fragment {
         return view;
     }
 
-    private int descriptionWordCount(String descriptionVal) {
-        int i =0;
-        for(int j=0;j<descriptionVal.length();j++){
-            if(compare(descriptionVal.charAt(j),' ')==0)
-            {i++;}
-        }
-      return i;
-    }
+//    private int descriptionWordCount(String descriptionVal) {
+//        int i =0;
+//        for(int j=0;j<descriptionVal.length();j++){
+//            if(compare(descriptionVal.charAt(j),' ')==0)
+//            {i++;}
+//        }
+//      return i;
+//    }
 
 
     private void uploadImages(FirebaseFirestore db, ProgressDialog pd, String documentID, String currentUser) {
