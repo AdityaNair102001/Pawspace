@@ -9,23 +9,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.slider.Slider;
 import com.smarteist.autoimageslider.SliderView;
-
-import java.util.ArrayList;
 
 public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.FeedListViewHolder> {
 
     private String[] data;
     private String[] location;
     private int[][] dogimages;
-    private SliderView postImageSlider;
-    public FeedListAdapter(String[] data, String[] location, int[][] dogimages, SliderView postImageSlider )
+//    private SliderView postImageSlider;
+    public FeedListAdapter(String[] data, String[] location, int[][] dogimages)
     {
         this.data=data;
         this.location=location;
         this.dogimages = dogimages;
-        this.postImageSlider = postImageSlider;
+//        this.postImageSlider = postImageSlider;
     }
 
     @NonNull
@@ -43,8 +40,14 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.FeedLi
         holder.username.setText(title);
 
         int[] images = dogimages[position];
-        adapterHandler(images);
+        adapterHandler(images,holder);
 //        holder.secondaryText.setText(loc);
+    }
+
+    private void adapterHandler(int[] images, FeedListViewHolder holder) {
+        HomeFragmentSliderAdapter adapter = new HomeFragmentSliderAdapter(images);
+        holder.postImageSlider.setSliderAdapter(adapter);
+
     }
 
     @Override
@@ -54,7 +57,7 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.FeedLi
 
     public class FeedListViewHolder extends RecyclerView.ViewHolder{
 
-        SliderView imageView;
+        SliderView postImageSlider;
         ImageView circleImageView;
         TextView username;
         TextView secondaryText;
@@ -62,7 +65,7 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.FeedLi
 
         public FeedListViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView=itemView.findViewById(R.id.imageSlider);
+            postImageSlider=itemView.findViewById(R.id.homePageImageSlider);
             circleImageView=itemView.findViewById(R.id.ProfilePicture);
             username=itemView.findViewById(R.id.Username);
           //  secondaryText=itemView.findViewById(R.id.secondaryText);
@@ -70,9 +73,5 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.FeedLi
 
         }
     }
-    private void adapterHandler(int[] images) {
-        HomeFragmentSliderAdapter adapter = new HomeFragmentSliderAdapter(images);
-        postImageSlider.setSliderAdapter(adapter);
 
-    }
 }
